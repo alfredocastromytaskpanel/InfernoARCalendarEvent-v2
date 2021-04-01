@@ -1,0 +1,44 @@
+﻿@using Microsoft.Identity.Web;
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <h3>
+        An ASP.NET Core Web App accessing Web API that calls Microsoft Graph
+    </h3>
+    <br />
+    <p>
+        To enable the users on your tenant to access this application and the web API,
+        you need to sign-in as an admin and consent for the required permissions. This makes the this app and the Web API available to all users in the tenant.
+    </p>
+
+    <a class="btn btn-primary" asp-area="" asp-controller="Home" asp-action="AdminConsentApi">Consent as Admin</a>
+
+    <p>
+        Note that you'd be asked to consent twice, once for the client app and then again for the Web API
+    </p>
+    <br />
+    <hr />
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <form asp-controller="ToDoList" asp-action="CreateEvent" method="post">
+            <div class="form-group">
+                @*<label for="recipients" class="control-label">Recipient email addresses, separated by a semicolon</label>*@
+                <label for="recipients" class="control-label">Recipient email address</label>
+                <input type="text" name="recipients" value="@ViewData["Email"]" class="form-control" style="width: 400px;" readonly />
+            </div>
+            <div class="form-group">
+                <label for="eventId">Inferno Event Id</label>
+                <input type="text" name="eventId" value="" style="width: 400px;" class="form-control" placeholder="(e.g. 248d8ea0-b518-493d-b9c1-0a9f3e4e94c7)" />
+                <small>Or leave it empty for default event.</small>
+            </div>
+            <button class="btn btn-primary" type="submit">Create Event</button>
+        </form>
+        <br />
+        <div class="alert alert-info @(TempData["Message"] == null ? "d-none" : null)" role="alert">
+            @Html.Raw(TempData["Message"])
+        </div>
+    }
+</div>
