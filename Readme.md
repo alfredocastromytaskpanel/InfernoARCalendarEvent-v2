@@ -177,7 +177,7 @@ As a first step you'll need to:
    - Click the **Add a permission** button and then,
    - Ensure that the **Microsoft APIs** tab is selected.
    - In the *Commonly used Microsoft APIs* section, click on **Microsoft Graph**
-   - In the **Delegated permissions** section, select the **User.Read.All** in the list. Use the search box if necessary.
+   - In the **Delegated permissions** section, select the **User.Read.All**, **User.Read.All**, **User.Read**, **profile**, **openid**, **offline_access**, **Mail.Send**, **email**, **Calendars.ReadWrite.Shared** and **Calendars.ReadWrite** in the list. Use the search box if necessary.
    - Click on the **Add permissions** button at the bottom.
 1. In the app's registration screen, select the **Expose an API** blade to the left to open the page where you can declare the parameters to expose this app as an Api for which client applications can obtain [access tokens](https://docs.microsoft.com/azure/active-directory/develop/access-tokens) for.
 The first thing that we need to do is to declare the unique [resource](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow) URI that the clients will be using to obtain access tokens for this Api. To declare an resource URI, follow the following steps:
